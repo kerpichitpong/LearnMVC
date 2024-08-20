@@ -1,0 +1,53 @@
+﻿@model LearnMVC.Models.Product
+
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="card-title mb-0">Delete Product</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="text-danger">คุณต้องการลบสินค้านี้ใช่ไหม?</h5>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-3">Category</dt>
+                        <dd class="col-sm-9">@Model.Category</dd>
+
+                        <dt class="col-sm-3">Product Name</dt>
+                        <dd class="col-sm-9">@Model.ProductName</dd>
+
+                        <dt class="col-sm-3">Description</dt>
+                        <dd class="col-sm-9">@Model.ProductDescription</dd>
+
+                        <dt class="col-sm-3">Price</dt>
+                        <dd class="col-sm-9">@Model.Price</dd>
+
+                        <dt class="col-sm-3">Stock Quantity</dt>
+                        <dd class="col-sm-9">@Model.StockQuantity</dd>
+
+                        <dt class="col-sm-3">Image</dt>
+                        <dd class="col-sm-9">
+                            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                <img src="@Model.ImageUrl" alt="@Model.ProductName" style="width:100px; height:auto;" />
+                            }
+                        </dd>
+                    </dl>
+                    <hr />
+                    <form asp-action="DeletePost" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
